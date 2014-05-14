@@ -2,7 +2,7 @@ Author		: Tasimba Chirindo
 Student Number  : CHRTAS004
 Date  		: 13 May 2014
 Title 		: Templates and stl specialisations
-Files submtitted: CryptoMachine.h classTraits.h classPolicies.h driver.cpp tpes.h cmdline_parser.cpp cmdline_parser.h Makefile Readme
+Files submtitted: CryptoMachine.h classTraits.h classPolicies.h driver.cpp tpes.h cmdline_parser.cpp cmdline_parser.h Makefile Readme testing.cpp
 
 This program aims to make it easier and cleaner to write the code by using templates. Functors and lambda functions have been used to call the actual functions with the decoding and encoding methods.
 
@@ -12,6 +12,6 @@ The program is templetated by four types namely cipher, mode, group and pack. I 
 ./assignment3 -o output.txt -i data.txt -e -v DR -m ECB
 
 
-
+In the files submitted, I have included the testing.cpp class. I used this class to do some unit tests on encoding and decoding using the vigenere and Xor algorithms. When run, the program passed both tests. The program cannot have two main programs, thus why i have included this file (testing.cpp) as evidence that i performed unit tests.
 
 

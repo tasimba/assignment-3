@@ -20,6 +20,15 @@
 
 using namespace std;
 namespace CHRTAS004 {
+
+/**
+* The class is templated by 4 type, where is type's composition is explained below:
+* Type : [vigenere, Xor]
+* Mode : [ECB , CBC]
+* Group
+* Pack
+*/
+
 template <typename cipher, typename mode, typename group, typename pack> class classPolicies{
 	public:
 	typedef cipher c;
@@ -76,7 +85,7 @@ template <typename pack> class classPolicies<vignere, ECB, grouped, pack>{
 			string key = s;
 
 			vector<string> list;
-			vector<string> encodedList;
+			vector<string> listEncoded;
 			std::copy(istream_iterator<string>(in), istream_iterator<string>(), back_inserter(list));
 			string conc = "";
 
@@ -113,7 +122,7 @@ template <typename group, typename pack> class classPolicies<vignere, ECB, group
 			string key = s;
 
 			vector<string> list;
-			vector<string> encodedList;
+			vector<string> listEncoded;
 			std::copy(istream_iterator<string>(in), istream_iterator<string>(), back_inserter(list));
 			vector<string>::iterator i;
 
@@ -135,7 +144,7 @@ template <typename group, typename pack> class classPolicies<vignere, ECB, group
 			string key = s;
 
 			vector<string> list;
-			vector<string> encodedList;
+			vector<string> listEncoded;
 			std::copy(istream_iterator<string>(in), istream_iterator<string>(), back_inserter(list));
 		
 			vector<string>::iterator i;
@@ -168,14 +177,14 @@ template <typename pack> class classPolicies<Xor, CBC, grouped, pack>{
 
 			stringstream(s) >> key;
 			vector<char> list;
-			vector<char> encodedList;
+			vector<char> listEncoded;
 			std::copy(istreambuf_iterator<char>(in), istreambuf_iterator<char>(), back_inserter(list));
-			std::transform(list.begin(), list.end(), back_inserter(encodedList), [key](char value){return ((int32_t)value)^key;});
+			std::transform(list.begin(), list.end(), back_inserter(listEncoded), [key](char value){return ((int32_t)value)^key;});
 			/*for (i = list.begin(); i != list.end();i++){
 				cout << *(i);
 			}*/
 			int count = 0;
-			for (char &s : encodedList){
+			for (char &s : listEncoded){
 				if (isalpha(s)){
 					count++;
 					out<<s;
@@ -205,14 +214,14 @@ template <typename group, typename pack> class classPolicies<Xor, CBC, group, pa
 
 			stringstream(s) >> key;
 			vector<char> list;
-			vector<char> encodedList;
+			vector<char> listEncoded;
 			std::copy(istreambuf_iterator<char>(in), istreambuf_iterator<char>(), back_inserter(list));
-			std::transform(list.begin(), list.end(), back_inserter(encodedList), [key](char value){return ((int32_t)value)^key;});
+			std::transform(list.begin(), list.end(), back_inserter(listEncoded), [key](char value){return ((int32_t)value)^key;});
 			vector<char>::iterator i;
 			/*for (i = list.begin(); i != list.end();i++){
 				cout << *(i);
 			}*/
-			for (char &s : encodedList){
+			for (char &s : listEncoded){
 				out<<s;
 				cout<<s;
 			}
