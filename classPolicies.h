@@ -1,3 +1,10 @@
+/*
+* name: Tasimba Chirindo
+* date: 10 May 2014
+* policy class for the program . characterizes behaviour of the class / class object
+*
+*/
+
 #ifndef CRYPTSPOLICIES_H_
 #define CRYPTSPOLICIES_H_
 #include "classTraits.h"
@@ -222,9 +229,7 @@ template <typename group, typename pack> class classPolicies<Xor, CBC, group, pa
 			std::copy(istreambuf_iterator<char>(in), istreambuf_iterator<char>(), back_inserter(list));
 			std::transform(list.begin(), list.end(), back_inserter(decodedList), [key](char value){return ((int32_t)value)^key;});
 			vector<char>::iterator i;
-			/*for (i = list.begin(); i != list.end();i++){
-				cout << *(i);
-			}*/
+			
 			for (char &s : decodedList){
 				out<<s;
 				cout<<s;

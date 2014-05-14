@@ -1,4 +1,9 @@
-
+/*
+* name: Tasimba Chirindo
+* date: 10 May 2014
+* driver class for the program
+*
+*/
 #include <fstream>
 #include <iostream>
 
@@ -12,10 +17,6 @@ using namespace CHRTAS004;
 // Run this program to see how the cmdline_parser class works.
 int main(int argc, char * argv[])
 {
-
-
-
-
 	// Instantiate the parser
 	cmdline_parser parser;
 
@@ -51,7 +52,7 @@ int main(int argc, char * argv[])
 		{
 			if (parser.check_group() == true)
 			{
-				CryptoMachine<Xor, grouped, pack,CBC> cry;
+				CryptoMachine<Xor,CBC, grouped, pack> cry;
 				cry.str = parser.get_ED_XOR();
 				cout<<"encoding....\n";
 				cry.encode(fin, fout);
@@ -60,7 +61,7 @@ int main(int argc, char * argv[])
 				
 			}
 			else{
-				CryptoMachine<Xor, group, pack,CBC> cry;
+				CryptoMachine<Xor, CBC ,group, pack> cry;
 				cry.str = parser.get_ED_XOR();
 				cout<<"encoding....\n";
 				cry.encode(fin, fout);
@@ -70,7 +71,7 @@ int main(int argc, char * argv[])
 		{
 			if (parser.check_group() == true)
 			{
-				CryptoMachine<vignere,grouped, pack,ECB> cry;
+				CryptoMachine<vignere,ECB,grouped, pack> cry;
 				cry.str = parser.get_ED_Vegenere();
 				cout<<"encoding....\n";
 				cry.encode(fin, fout);
@@ -80,11 +81,11 @@ int main(int argc, char * argv[])
 
 			}
 			else{
-				CryptoMachine<vignere, group, pack, ECB> cry;
+				CryptoMachine<vignere, ECB,group, pack> cry;
 				cry.str = parser.get_ED_Vegenere();
 				cout<<"encoding....\n";
 				cry.encode(fin, fout);
-				//ifstream inf(parser.get_input_filename().c_str());
+				
 			}
 		}
 		
@@ -106,15 +107,10 @@ int main(int argc, char * argv[])
 			cry.str = parser.get_ED_Vegenere();
 			cout<<"decoding....\n";
 			cry.decode(fin, fout);
-			//ifstream inf(parser.get_input_filename().c_str());
+			
 		}
 
 	}
-
-
-
-
-
 
 	if (parser.check_pack() == true)
 	{

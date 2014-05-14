@@ -1,3 +1,11 @@
+/*
+* name: Tasimba Chirindo
+* date: 10 May 2014
+* CryproMachine class. handler for encoding/decoding i.e accesses the functions
+*
+*/
+
+
 #ifndef CRYPTOMACHINE_H
 #define CRYPTOMACHINE_H
 
@@ -14,9 +22,9 @@
 using namespace std;
 
 using namespace CHRTAS004 ;
-template <typename cipher, typename grouped, typename packed, typename mode,
-        typename cTraits = classTraits<cipher, grouped, packed>,
-        typename cPolicies = classPolicies<cipher, grouped, packed> >
+template <typename cipher, typename mode,typename grouped, typename packed, 
+        typename cTraits = classTraits<cipher, mode, grouped, packed>,
+        typename cPolicies = classPolicies<cipher, mode,grouped, packed> >
 
 class CryptoMachine{
     public:
